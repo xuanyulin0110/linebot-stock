@@ -1,6 +1,7 @@
 # 運行以下程式需安裝模組: line-bot-sdk, flask, pyquery
 # 安裝方式，輸入指令: pip install 模組名稱
-
+#引入zuvio
+from zuvio import zuvio_check
 #引入ooxx
 from asyncio import events
 import profile
@@ -93,7 +94,13 @@ def handle_message(event):
         reply = [TextSendMessage(text=ooxx(User_profile.display_name, user_msg))]
         reply.append(menu2)
 
-
+    if user_msg == '簽到':
+        zuvio_check()
+        reply = [TextSendMessage(text='簽到done')]
+        reply.append(ImageSendMessage(
+        original_content_url='https://line-bot-xy.herokuapp.com/static/tmp/test.png',
+        preview_image_url='https://line-bot-xy.herokuapp.com/static/tmp/test.png'
+        ))
 
 
 
