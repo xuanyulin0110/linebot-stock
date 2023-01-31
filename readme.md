@@ -90,3 +90,5 @@ git push heroku master
 
 
 /Users/xuanyulin/.fly/bin/flyctl 
+## fly.io deploy
+/Users/xuanyulin/.fly/bin/flyctl deploy

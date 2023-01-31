@@ -1,6 +1,7 @@
 from linebot.models import (
-    MessageEvent, TextMessage, StickerMessage, TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, TemplateSendMessage, ButtonsTemplate, PostbackAction, MessageAction, URIAction, CarouselTemplate, CarouselColumn, QuickReply, QuickReplyButton
+    MessageEvent, TextMessage, StickerMessage, TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, TemplateSendMessage, ButtonsTemplate, PostbackAction, MessageAction, URIAction, CarouselTemplate, CarouselColumn, QuickReply, QuickReplyButton,FlexSendMessage
 )
+
 
 # 官方文件
 # https://github.com/line/line-bot-sdk-python
@@ -16,13 +17,43 @@ faq1 = {
         preview_image_url='https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/62/e9/2b/101.jpg?w=400&h=300&s=1'
         #https://picsum.photos/id/395/900/400
     ),
-    '交通': TextSendMessage(text='請問您想使用何種方式前往？',
+    'ooxx': TextSendMessage(text='請問您想使用何種遊戲模式？',
                           quick_reply=QuickReply(items=[
                               QuickReplyButton(action=MessageAction(
-                                  label="搭乘捷運", text="捷運")
+                                  label="單人", text="ooxx-單人")
                               ),
                               QuickReplyButton(action=MessageAction(
-                                  label="搭乘公車", text="公車")
+                                  label="多人", text="ooxx多人")
+                              )
+                          ])
+                          ),
+    'ooxx多人': TextSendMessage(text='請問您想使用何種遊戲模式？',
+                          quick_reply=QuickReply(items=[
+                              QuickReplyButton(action=MessageAction(
+                                  label="房間一", text="ooxx一")
+                              ),
+                              QuickReplyButton(action=MessageAction(
+                                  label="房間二", text="ooxx二")
+                              )
+                          ])
+                          ),
+    'ooxx一': TextSendMessage(text='請問您想使用o或x?',
+                          quick_reply=QuickReply(items=[
+                              QuickReplyButton(action=MessageAction(
+                                  label="o", text="ooxx-一o")
+                              ),
+                              QuickReplyButton(action=MessageAction(
+                                  label="x", text="ooxx-一x")
+                              )
+                          ])
+                          ),
+    'ooxx二': TextSendMessage(text='請問您想使用o或x？',
+                          quick_reply=QuickReply(items=[
+                              QuickReplyButton(action=MessageAction(
+                                  label="o", text="ooxx-二o")
+                              ),
+                              QuickReplyButton(action=MessageAction(
+                                  label="x", text="ooxx-二x")
                               )
                           ])
                           ),
@@ -39,6 +70,9 @@ faq1 = {
     'ooxx玩法': TextSendMessage(text='輸入:put o 位置\n例如:put o 1-1'),
     '公車': TextSendMessage(text='11路'),
 }
+
+
+
 
 # 主選單
 menu1 = TemplateSendMessage(
@@ -157,3 +191,4 @@ menu2 = TemplateSendMessage(
         ]
     )
 )
+
